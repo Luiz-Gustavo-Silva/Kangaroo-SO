@@ -32,6 +32,8 @@ public class Usuario {
     
     Conexao con = new Conexao();
     JdbcTemplate template = new JdbcTemplate(con.getBanco());
+    Conexao2 con2 = new Conexao2(); 
+    JdbcTemplate template2 = new JdbcTemplate(con2.getBanco());
     
    
        
@@ -67,7 +69,9 @@ public class Usuario {
     }
     //public void selectTeste(){
         List resultados = template.queryForList("SELECT email FROM Usuario");
+        List resultados2 = template2.queryForList("SELECT email FROM Usuario");
         List resultadosSenha = template.queryForList("SELECT senha FROM Usuario");
+        List resultadosSenha2 = template2.queryForList("SELECT senha FROM Usuario");
         //System.out.println(resultados.toString());
     //}
 }

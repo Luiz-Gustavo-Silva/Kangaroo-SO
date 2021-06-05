@@ -10,6 +10,8 @@ public class Computador {
     Sistema sistema = new Sistema();
     Conexao con = new Conexao(); 
     JdbcTemplate template = new JdbcTemplate(con.getBanco());
+    Conexao2 con2 = new Conexao2(); 
+    JdbcTemplate template2 = new JdbcTemplate(con2.getBanco());
     
     private String sistemaOperacional;
     private long tempoDeUso;

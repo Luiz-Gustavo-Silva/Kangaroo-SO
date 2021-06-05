@@ -16,6 +16,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class DadosUsuario {
     Conexao con = new Conexao();
     JdbcTemplate template = new JdbcTemplate(con.getBanco());
+    Conexao2 con2 = new Conexao2(); 
+    JdbcTemplate template2 = new JdbcTemplate(con2.getBanco());
     
     private String nomeUsuario;
     private Integer cpf;

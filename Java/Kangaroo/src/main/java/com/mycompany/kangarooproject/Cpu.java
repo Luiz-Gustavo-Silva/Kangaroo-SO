@@ -26,6 +26,8 @@ public class Cpu extends javax.swing.JFrame {
     Sistema sistema = new Sistema();
     Conexao con = new Conexao();
     JdbcTemplate template = new JdbcTemplate(con.getBanco());
+    Conexao2 con2 = new Conexao2(); 
+    JdbcTemplate template2 = new JdbcTemplate(con2.getBanco());
 
     SitesMaliciosos site = new SitesMaliciosos();
     
@@ -63,10 +65,13 @@ public class Cpu extends javax.swing.JFrame {
                 String insert = "INSERT INTO monitoramento(processadorLogico, processadorFisico, usandoCpu) VALUES (?, ?, ?)";
 
                 template.update(insert, processadorLogico, processadorFisico, valorCpuUsadoConta);
+                template2.update(insert, processadorLogico, processadorFisico, valorCpuUsadoConta);
 
                 System.out.println(processadorFisico + processadorLogico + valorCpuUsadoConta);
                 List resultados = template.queryForList("SELECT processadorLogico, processadorFisico, usandoCpu  FROM monitoramento");
+                List resultados2 = template2.queryForList("SELECT processadorLogico, processadorFisico, usandoCpu  FROM monitoramento");
                 System.out.println(resultados);
+                System.out.println(resultados2);
                 
                 pc.setSistemaOperacional(sistema.getSistemaOperacional());
                 pc.setTempoDeUso(sistema.getTempoDeAtividade());
@@ -78,9 +83,11 @@ public class Cpu extends javax.swing.JFrame {
                 
                 String insertSO = "UPDATE computador  set sistemaOperacional = (?) where idComputador = 1";
                 template.update(insertSO, pc.getSistemaOperacional());
+                template2.update(insertSO, pc.getSistemaOperacional());
 
                 String insertMonitoramento = "INSERT INTO monitoramento (tempoDeUso) values (?)";
                 template.update(insertMonitoramento, tempoDeAtividade);
+                template2.update(insertMonitoramento, tempoDeAtividade);
    
             }
         }, delay, interval);

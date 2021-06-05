@@ -23,6 +23,8 @@ public class Discos extends javax.swing.JFrame {
    
     Conexao con = new Conexao();
     JdbcTemplate template = new JdbcTemplate(con.getBanco());
+    Conexao2 con2 = new Conexao2(); 
+    JdbcTemplate template2 = new JdbcTemplate(con2.getBanco());
     
     Computador pc = new Computador();
     
@@ -90,12 +92,15 @@ public class Discos extends javax.swing.JFrame {
                 String insertInfoDisco = "INSERT INTO monitoramento (nomeDisco, tempoDeAtividade) VALUES (?, ?)";
                 
                 template.update(insert, valorDiscoTotal, valorDiscoLivre);
+                template2.update(insert, valorDiscoTotal, valorDiscoLivre);
                 template.update(insertInfoDisco, nomeDisco, tempoDeTransferencia);
+                template2.update(insertInfoDisco, nomeDisco, tempoDeTransferencia);
 
-                
                 System.out.println(valorDiscoTotal + valorDiscoLivre);
                 List resultados = template.queryForList("SELECT totalDisco, livreDisco FROM monitoramento");
+                List resultados2 = template2.queryForList("SELECT totalDisco, livreDisco FROM monitoramento");
                 System.out.println(resultados);
+                System.out.println(resultados2);
 
                 
                 Double valorLeitura = 0.0;
@@ -108,10 +113,13 @@ public class Discos extends javax.swing.JFrame {
                 String insertDisco = "INSERT INTO monitoramento(usandoDisco) VALUES (?)";
 
                 template.update(insertDisco, valorLeitura);
+                template2.update(insertDisco, valorLeitura);
 
                 System.out.println(valorLeitura);
                 List resultadosDisco = template.queryForList("SELECT usandoDisco FROM monitoramento");
+                List resultadosDisco2 = template2.queryForList("SELECT usandoDisco FROM monitoramento");
                 System.out.println(resultadosDisco);
+                System.out.println(resultadosDisco2);
             }
         }, delay, interval);
     }

@@ -17,6 +17,8 @@ public class Ram extends javax.swing.JFrame {
     
     Conexao con = new Conexao(); // Chamando a classe de conexao com o banco local
     JdbcTemplate template = new JdbcTemplate(con.getBanco());// Criando um template do tipo JDBC para poder inserir comandos do banco pelo Script do Java
+    Conexao2 con2 = new Conexao2(); 
+    JdbcTemplate template2 = new JdbcTemplate(con2.getBanco());
     
     Timer timer = new Timer(); // Criando um timer do tipo Timer para colocar um intervalo
         int delay = 5000; // tempo de atraso para executar a tarefa em um intervalo de tempo
@@ -43,6 +45,7 @@ public class Ram extends javax.swing.JFrame {
                 String insert = "INSERT INTO monitoramento(totalRam, livreRam, usandoRam) VALUES (?, ?, ?)"; // variável que será chamada para inserir dados na tabela RAM
                 
                 template.update(insert, valorRamTotalConta, valorRamLivre, valorRamUsadaConta); // Inserindo os dados na tabela por meio do template.update;
+                template2.update(insert, valorRamTotalConta, valorRamLivre, valorRamUsadaConta);
                 System.out.println("INSERT: " + insert);
                 System.out.println("valorRamLivre: " + valorRamLivre);
                 System.out.println("valorRamTotalConta: " + valorRamTotalConta);
@@ -66,7 +69,9 @@ public class Ram extends javax.swing.JFrame {
                 
                 System.out.println(valorRamTotalConta+ valorRamLivre+ valorRamUsadaConta); // Ver se ta pegando os dados
                 List resultados = template.queryForList("SELECT totalRam, livreRam, usandoRam FROM monitoramento"); // Ver se ta pegando os dados
+                List resultados2 = template2.queryForList("SELECT totalRam, livreRam, usandoRam FROM monitoramento");
                 System.out.println(resultados); // Ver se ta pegando os dados
+                System.out.println(resultados2);
                 
             }
         }, delay, interval); // Ver se ta pegando os dados

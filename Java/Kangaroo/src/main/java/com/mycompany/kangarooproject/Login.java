@@ -13,9 +13,11 @@ import org.springframework.jdbc.core.JdbcTemplate; // Import para fazer os coman
 
 public class Login extends javax.swing.JFrame {
 
-    Conexao con = new Conexao(); // Chamando a classe de conexao com o banco local
-    
+    Conexao con = new Conexao(); // Chamando a classe de conexao com o banco local    
     JdbcTemplate template = new JdbcTemplate(con.getBanco());
+    
+    Conexao2 con2 = new Conexao2(); 
+    JdbcTemplate template2 = new JdbcTemplate(con2.getBanco());
 //    ScriptPython python = new ScriptPython();
     JSONObject json = new JSONObject();
             
