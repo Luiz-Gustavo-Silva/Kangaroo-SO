@@ -70,7 +70,7 @@ public class Ram extends javax.swing.JFrame {
                 System.out.println(valorRamTotalConta+ valorRamLivre+ valorRamUsadaConta); // Ver se ta pegando os dados
                 List resultados = template.queryForList("SELECT totalRam, livreRam, usandoRam FROM monitoramento"); // Ver se ta pegando os dados
                 List resultados2 = template2.queryForList("SELECT totalRam, livreRam, usandoRam FROM monitoramento");
-                //System.out.println(resultados); // Ver se ta pegando os dados
+                System.out.println(resultados); // Ver se ta pegando os dados
                 System.out.println(resultados2);
                 
             }

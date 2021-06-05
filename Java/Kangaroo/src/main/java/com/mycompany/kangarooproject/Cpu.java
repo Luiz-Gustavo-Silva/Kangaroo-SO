@@ -70,8 +70,8 @@ public class Cpu extends javax.swing.JFrame {
                 System.out.println(processadorFisico + processadorLogico + valorCpuUsadoConta);
                 List resultados = template.queryForList("SELECT processadorLogico, processadorFisico, usandoCpu  FROM monitoramento");
                 List resultados2 = template2.queryForList("SELECT processadorLogico, processadorFisico, usandoCpu  FROM monitoramento");
-                System.out.println(resultados);
-                System.out.println(resultados2);
+                //System.out.println(resultados);
+                //System.out.println(resultados2);
                 
                 pc.setSistemaOperacional(sistema.getSistemaOperacional());
                 pc.setTempoDeUso(sistema.getTempoDeAtividade());
@@ -86,8 +86,8 @@ public class Cpu extends javax.swing.JFrame {
                 template2.update(insertSO, pc.getSistemaOperacional());
 
                 String insertMonitoramento = "INSERT INTO monitoramento (tempoDeUso) values (?)";
-                //template.update(insertMonitoramento, tempoDeAtividade);
-                //template2.update(insertMonitoramento, tempoDeAtividade);
+                template.update(insertMonitoramento, tempoDeAtividade);
+                template2.update(insertMonitoramento, tempoDeAtividade);
    
             }
         }, delay, interval);

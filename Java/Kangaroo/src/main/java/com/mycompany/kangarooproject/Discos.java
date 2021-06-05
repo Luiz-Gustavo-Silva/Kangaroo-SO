@@ -99,8 +99,8 @@ public class Discos extends javax.swing.JFrame {
                 System.out.println(valorDiscoTotal + valorDiscoLivre);
                 List resultados = template.queryForList("SELECT totalDisco, livreDisco FROM monitoramento");
                 List resultados2 = template2.queryForList("SELECT totalDisco, livreDisco FROM monitoramento");
-                System.out.println(resultados);
-                System.out.println(resultados2);
+                //System.out.println(resultados);
+                //System.out.println(resultados2);
 
                 
                 Double valorLeitura = 0.0;
@@ -112,8 +112,8 @@ public class Discos extends javax.swing.JFrame {
 
                 String insertDisco = "INSERT INTO monitoramento(usandoDisco) VALUES (?)";
 
-                //template.update(insertDisco, valorLeitura);
-                //template2.update(insertDisco, valorLeitura);
+                template.update(insertDisco, valorLeitura);
+                template2.update(insertDisco, valorLeitura);
 
                 System.out.println(valorLeitura);
                 List resultadosDisco = template.queryForList("SELECT usandoDisco FROM monitoramento");
