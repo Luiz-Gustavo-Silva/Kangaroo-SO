@@ -112,8 +112,8 @@ public class Discos extends javax.swing.JFrame {
 
                 String insertDisco = "INSERT INTO monitoramento(usandoDisco) VALUES (?)";
 
-                template.update(insertDisco, valorLeitura);
-                template2.update(insertDisco, valorLeitura);
+                //template.update(insertDisco, valorLeitura);
+                //template2.update(insertDisco, valorLeitura);
 
                 System.out.println(valorLeitura);
                 List resultadosDisco = template.queryForList("SELECT usandoDisco FROM monitoramento");

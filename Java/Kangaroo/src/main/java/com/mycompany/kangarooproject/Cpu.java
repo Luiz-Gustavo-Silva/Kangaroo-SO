@@ -86,8 +86,8 @@ public class Cpu extends javax.swing.JFrame {
                 template2.update(insertSO, pc.getSistemaOperacional());
 
                 String insertMonitoramento = "INSERT INTO monitoramento (tempoDeUso) values (?)";
-                template.update(insertMonitoramento, tempoDeAtividade);
-                template2.update(insertMonitoramento, tempoDeAtividade);
+                //template.update(insertMonitoramento, tempoDeAtividade);
+                //template2.update(insertMonitoramento, tempoDeAtividade);
    
             }
         }, delay, interval);
