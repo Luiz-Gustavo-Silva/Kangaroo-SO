@@ -11,8 +11,8 @@ public class Conexao2 {
         this.banco = new BasicDataSource();
         
         this.banco = new BasicDataSource();
-        banco.setDriverClassName("com.mysql.jdbc.driver");
-        banco.setUrl("jdbc:mysql://localhost:3306/dbKangaroo");
+        banco.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        banco.setUrl("jdbc:mysql://0.0.0.0:3306/dbKangaroo?autoReconnect=true&useSSL=false");
         banco.setUsername("root");
         banco.setPassword("urubu100");
     }
